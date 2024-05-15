@@ -9,11 +9,10 @@ if len(sys.argv) < 3:
 
 src_file = sys.argv[1]
 dst_file = sys.argv[2]
-changes = sys.argv[3]
-
-if not changes:
-    print("No changes provided!")
-    sys.exit(1)
+change1 = sys.argv[3]
+change2 = sys.argv[4]
+change3 = sys.argv[5]
+change4 = sys.argv[6]
 
 # Reading the source file
 try:
