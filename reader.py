@@ -25,3 +25,31 @@ try:
 except FileNotFoundError:
     print(f"\nFile not found: {src_file}")
     sys.exit(1)
+
+# Splitting the data from source file
+try:
+    col1, row1, value1 = [int(x) if i < 2 else x.strip() for i, x in enumerate(change1.split(","))]
+    col2, row2, value2 = [int(x) if i < 2 else x.strip() for i, x in enumerate(change2.split(","))]
+    col3, row3, value3 = [int(x) if i < 2 else x.strip() for i, x in enumerate(change3.split(","))]
+    col4, row4, value4 = [int(x) if i < 2 else x.strip() for i, x in enumerate(change4.split(","))]
+
+    reader[row1][col1] = value1
+    reader[row2][col2] = value2
+    reader[row3][col3] = value3
+    reader[row4][col4] = value4
+except (ValueError, IndexError):
+    print("\nError with changes! Please try again.")
+    sys.exit(1)
+
+# Saving destiantion file
+try:
+    with open(dst_file, "w", newline="") as file2:
+        writer = csv.writer(file2)
+        writer.writerows(reader)
+except:
+    print(f"\nError writing in file: {dst_file}")
+
+# printing destiantion file to terminal
+print("\nModified CSV Content:\n")
+for new_content in reader:
+    print(",".join(new_content))
