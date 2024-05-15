@@ -1,10 +1,16 @@
+# Import of built-in packages
 import sys
 import csv
+import os
 
-if len(sys.argv) < 3:
+# Check for provided arguments and changes
+if len(sys.argv) < 7:
     print("Usage of the app:")
     print("Please type in the command in the following format with all arguments provided:")
-    print("py reader.py src_file dst_file change1 change2 change3 change4")
+    if (os.name) == "nt":
+        print("py reader.py src_file dst_file change1 change2 change3 change4")
+    else:
+        print("python3 reader.py src_file dst_file change1 change2 change3 change4")
     sys.exit(1)
 
 src_file = sys.argv[1]
@@ -18,7 +24,7 @@ change4 = sys.argv[6]
 try:
     with open(src_file, "r") as file:
         reader = list(csv.reader(file))
-        print("\'IN.CSV' file:\n")
+        print("\n'IN.CSV' file:\n")
         # iteration through data in source file
         for old_content in reader:
             print(",".join(old_content))
@@ -50,6 +56,6 @@ except:
     print(f"\nError writing in file: {dst_file}")
 
 # printing destiantion file to terminal
-print("\OUT.CSV file:\n")
+print("\n'OUT.CSV' file:\n")
 for new_content in reader:
     print(",".join(new_content))
