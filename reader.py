@@ -18,7 +18,7 @@ change4 = sys.argv[6]
 try:
     with open(src_file, "r") as file:
         reader = list(csv.reader(file))
-        print("\nOriginal CSV content:\n")
+        print("\'IN.CSV' file:\n")
         # iteration through data in source file
         for old_content in reader:
             print(",".join(old_content))
@@ -50,6 +50,6 @@ except:
     print(f"\nError writing in file: {dst_file}")
 
 # printing destiantion file to terminal
-print("\nModified CSV Content:\n")
+print("\OUT.CSV file:\n")
 for new_content in reader:
     print(",".join(new_content))
